@@ -20,5 +20,6 @@ from stars.views import StarsAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/starslist/', StarsAPIView.as_view())
+    path('api/v1/starslist/', StarsAPIView.as_view()),
+    path('api/v1/starslist/<int:pk>/', StarsAPIView.as_view()),
 ]

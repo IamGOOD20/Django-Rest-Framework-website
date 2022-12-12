@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from stars.views import StarsAPIView
+from stars.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/starslist/', StarsAPIView.as_view()),
-    path('api/v1/starslist/<int:pk>/', StarsAPIView.as_view()),
+    path('api/v1/starslist/', StarsAPIList.as_view()),
+    path('api/v1/starslist/<int:pk>/', StarsAPIUpdate.as_view()),
+    path('api/v1/starsdetail/<int:pk>/', StarsAPIDetailView.as_view()),
+
 ]

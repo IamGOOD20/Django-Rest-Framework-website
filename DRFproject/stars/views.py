@@ -6,7 +6,19 @@ from rest_framework.response import Response
 from .serializer import StarsSerializer
 from .models import Stars
 
+class StarsAPIList(generics.ListCreateAPIView): # класс Get and Post в одном
+      queryset = Stars.objects.all()
+      serializer_class = StarsSerializer
 
+class StarsAPIUpdate(generics.UpdateAPIView):
+      queryset = Stars.objects.all()
+      serializer_class = StarsSerializer
+
+class StarsAPIDetailView(generics.RetrieveUpdateDestroyAPIView):
+      queryset = Stars.objects.all()
+      serializer_class = StarsSerializer
+
+'''
 class StarsAPIView(APIView):
       def get(self, request):
             w = Stars.objects.all().all()
@@ -42,7 +54,7 @@ class StarsAPIView(APIView):
                   return Response({'error': 'Method DELETE not allowed'})
 
             return Response({'post': 'delete post' + str(pk)})
-
+'''
 
 # class StarsAPIView(generics.ListAPIView):
 #      queryset = Stars.objects.all()

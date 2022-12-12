@@ -2,16 +2,18 @@ from rest_framework import serializers
 from rest_framework.parsers import JSONParser
 from rest_framework.renderers import JSONRenderer
 import io
-
 from .models import Stars
 
 
-#class StarsModel:
-#     def __init__(self, title, content):
-#          self.title = title
-#         self.content = content
+class StarsSerializer(serializers.ModelSerializer):
+      class Meta:
+            model = Stars
+            fields = '__all__' # ('title', 'content', 'cat')
 
 
+
+
+'''
 class StarsSerializer(serializers.Serializer): # преобразоварие в Json
       title = serializers.CharField(max_length=255)
       content = serializers.CharField()
@@ -34,7 +36,7 @@ class StarsSerializer(serializers.Serializer): # преобразоварие в
             return instance
 
 
-'''
+
 def encode():
       model = StarsModel('Leo Messi', 'Content: Leo Messi')
       model_sr = StarsSerializer(model)

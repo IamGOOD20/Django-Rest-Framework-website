@@ -19,7 +19,7 @@ from django.urls import path, include
 from stars.views import *
 from rest_framework import routers
 
-
+'''
 class MyCustomRouters(routers.SimpleRouter):
     routes = [
         routers.Route(
@@ -43,15 +43,20 @@ class MyCustomRouters(routers.SimpleRouter):
             initkwargs={}
         )
     ]
-
-
+'''
+'''
 router = MyCustomRouters()
 router.register(r'stars', StarsViewSet, basename= 'ModelStars')
 print(router.urls)
+'''
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include(router.urls)), #http://127.0.0.1:8000/api/v1/stars/
+    #path('api/v1/', include(router.urls)), #http://127.0.0.1:8000/api/v1/stars/
     #path('api/v1/starslist/', StarsViewSet.as_view({'get': 'list'})),
     #path('api/v1/starslist/<int:pk>/', StarsViewSet.as_view({'put': 'update'})),
+    path('api/v1/starslist/', StarsAPIList.as_view()),
+    path('api/v1/starsupdate/<int:pk>/', StarsAPIUpdate.as_view()),
+    path('api/v1/starsdelete/<int:pk>/', StarsAPIDestroy.as_view()),
 ]

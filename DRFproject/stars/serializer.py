@@ -6,6 +6,8 @@ from .models import Stars
 
 
 class StarsSerializer(serializers.ModelSerializer):
+      user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
       class Meta:
             model = Stars
             fields = '__all__' # ('title', 'content', 'cat')

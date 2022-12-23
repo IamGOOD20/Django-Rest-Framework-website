@@ -1,8 +1,9 @@
 from django.forms import model_to_dict
 from rest_framework import generics, viewsets
 from django.shortcuts import render
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import action
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser, IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
@@ -39,7 +40,8 @@ class StarsAPIList(generics.ListCreateAPIView): # класс Get and Post в о�
 class StarsAPIUpdate(generics.UpdateAPIView):
       queryset = Stars.objects.all()
       serializer_class = StarsSerializer
-      permission_classes = (IsOwnerOrReadOnly, )
+      permission_classes = (IsAuthenticated, )
+      # authentication_classes = (TokenAuthentication, ) # доступ только по токену
 
 class StarsAPIDestroy(generics.RetrieveDestroyAPIView):
       queryset = Stars.objects.all()

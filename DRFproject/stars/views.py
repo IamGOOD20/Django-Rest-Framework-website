@@ -48,6 +48,8 @@ class StarsAPIDestroy(generics.RetrieveDestroyAPIView):
       serializer_class = StarsSerializer
       permission_classes = (IsAdminOrReadOnly, )
 
+
+
 '''
 class StarsAPIDetailView(generics.RetrieveUpdateDestroyAPIView):
       queryset = Stars.objects.all()

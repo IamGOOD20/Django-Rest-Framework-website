@@ -35,14 +35,14 @@ class StarsViewSet(viewsets.ModelViewSet):
 
 class StarsAPIListPagination(PageNumberPagination):
       page_size = 2
-      page_size_query_param = 'page_size'
-      max_page_size = 10000
+      page_size_query_param = 'page_size' # use ?page_size=1-.... for manual pagination
+      max_page_size = 10
 
 class StarsAPIList(generics.ListCreateAPIView): # класс Get and Post в одном
       queryset = Stars.objects.all()
       serializer_class = StarsSerializer
       permission_classes = (IsAuthenticatedOrReadOnly, )
-      pagination_class = StarsAPIListPagination #limit=2&offset=2*page_size=1
+      pagination_class = StarsAPIListPagination # use ?page_size=1-.... for manual paginations
 
 class StarsAPIUpdate(generics.UpdateAPIView):
       queryset = Stars.objects.all()

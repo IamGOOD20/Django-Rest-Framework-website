@@ -3,6 +3,7 @@ from rest_framework import generics, viewsets
 from django.shortcuts import render
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import action
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser, IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -32,10 +33,16 @@ class StarsViewSet(viewsets.ModelViewSet):
             return Response({'cats': cats.name})
 '''
 
+class StarsAPIListPagination(PageNumberPagination):
+      page_size = 2
+      page_size_query_param = 'page_size'
+      max_page_size = 10000
+
 class StarsAPIList(generics.ListCreateAPIView): # класс Get and Post в одном
       queryset = Stars.objects.all()
       serializer_class = StarsSerializer
       permission_classes = (IsAuthenticatedOrReadOnly, )
+      pagination_class = StarsAPIListPagination #limit=2&offset=2*page_size=1
 
 class StarsAPIUpdate(generics.UpdateAPIView):
       queryset = Stars.objects.all()

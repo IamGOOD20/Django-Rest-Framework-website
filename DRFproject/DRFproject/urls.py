@@ -59,7 +59,6 @@ urlpatterns = [
     #path('api/v1/starslist/<int:pk>/', StarsViewSet.as_view({'put': 'update'})),
     path('api/v1/drf-auth/', include('rest_framework.urls')),
     path('api/v1/starslist/', StarsAPIList.as_view()),
-
     path('api/v1/starsupdate/<int:pk>/', StarsAPIUpdate.as_view()),
     path('api/v1/starsdelete/<int:pk>/', StarsAPIDestroy.as_view()),
     path('api/v1/auth/', include('djoser.urls')),

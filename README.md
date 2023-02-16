@@ -1,9 +1,9 @@
-## Goal: 
-created an information site for registering a new user, captcha, and functional
-admin panel.
-## Solution: 
-Django Framework and Python was used for development.
-## Result: 
-the website displays information about famous people in the form of posts,
-enabling searching. Categories by type of activity were added. Additional functionality
-is available to the user after registration.
+###Goal: 
+the purpose of this project was to explore the possibility of quickly adding,
+changing, reading.
+###
+Solution: 
+Django REST framework with its set of tools combined with Postman, was
+used for quick and easy to use implementation of the requirements.
+###Result: 
+using fast APIs, the user could quickly make the desired changes on the website.

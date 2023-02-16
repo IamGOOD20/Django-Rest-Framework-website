@@ -1,3 +1,5 @@
+## Used: 
+Python, Django, Django REST Framework, Postman.
 ## Goal: 
 the purpose of this project was to explore the possibility of quickly adding,
 changing, reading.
